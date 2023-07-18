@@ -12,6 +12,7 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
@@ -27,11 +28,6 @@ public class homePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
     }
-    @ViewById
-    TextView homepageWelcome;
-
-    @ViewById
-    ImageView homepageImage;
 
     Realm user;
     @AfterViews
@@ -42,20 +38,6 @@ public class homePage extends AppCompatActivity {
         String uuid = checker.getString("UUID", "");
 
         Table result = user.where(Table.class).equalTo("uuid", uuid).findFirst();
-
-        if (check.isEmpty()){
-            homepageWelcome.setText("Welcome " + result.getName() + "!!!");
-        }
-        if (check.contentEquals("hi")){
-            homepageWelcome.setText("Welcome " + result.getName() + "!!! You will be Remembered!!!");
-        }
-
-        File getImageDir = getExternalCacheDir();
-        File savedImage = new File(getImageDir, result.getUuid()+".jpeg");
-
-        if (savedImage.exists()) {
-            refreshImageView(homepageImage, savedImage);
-        }
     }
     public void onDestroy() {
         super.onDestroy();
@@ -65,14 +47,16 @@ public class homePage extends AppCompatActivity {
         }
     }
 
-    private void refreshImageView(ImageView imageView, File savedImage) {
+    @Click
+    public void homepageManageAccountButton() {
+        SharedPreferences checker = getSharedPreferences("data", MODE_PRIVATE);
+        String uuid = checker.getString("UUID", "");
 
+        manageaccountPage_.intent(this).uuidString(uuid).start();
+    }
 
-        // this will put the image saved to the file system to the imageview
-        Picasso.get()
-                .load(savedImage)
-                .networkPolicy(NetworkPolicy.NO_CACHE)
-                .memoryPolicy(MemoryPolicy.NO_CACHE)
-                .into(imageView);
+    @Click
+    public void homepageLogoutButton() {
+        finish();
     }
 }
