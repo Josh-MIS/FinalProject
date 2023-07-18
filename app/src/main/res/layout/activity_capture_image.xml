@@ -31,16 +31,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#FFcccccc"
-                android:padding="5dp"
-                >
+                android:padding="5dp">
 
                 <com.theartofdev.edmodo.cropper.CropImageView
                     android:id="@+id/cropImageView"
@@ -65,24 +64,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_menu_camera"
-                    android:tooltipText="Open Camera"
-                    />
+                    android:tooltipText="Open Camera" />
 
                 <ImageButton
                     android:id="@+id/crop"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_menu_crop"
-                    android:tooltipText="Crop Image"
-                    />
+                    android:tooltipText="Crop Image" />
 
                 <ImageButton
                     android:id="@+id/rotate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_menu_rotate"
-                    android:tooltipText="Rotate Image"
-                    />
+                    android:tooltipText="Rotate Image" />
             </LinearLayout>
 
         </LinearLayout>
@@ -96,10 +92,10 @@
             android:paddingBottom="30dp">
 
             <Button
-                android:layout_margin="5dp"
                 android:id="@+id/cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:text="Cancel" />
 
