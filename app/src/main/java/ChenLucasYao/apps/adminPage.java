@@ -61,12 +61,12 @@ public class adminPage extends AppCompatActivity {
             user.commitTransaction();
         }
     }
-    public void edit(Table u)
-    {
-        String uuid = u.getUuid();
-
-        editPage_.intent(this).uuidString(uuid).start();
-    }
+//    public void edit(Table u)
+//    {
+//        String uuid = u.getUuid();
+//
+//        editPage_.intent(this).uuidString(uuid).start();
+//    }
 
     @Click
     public void adminClearButton() {

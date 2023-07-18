@@ -33,7 +33,7 @@ public class TableAdapter extends RealmRecyclerViewAdapter<Table, TableAdapter.V
 
             username = itemView.findViewById(R.id.rowlayoutUsername);
             password = itemView.findViewById(R.id.rowlayoutPassword);
-            edit = itemView.findViewById(R.id.rowlayoutEditButton);
+//            edit = itemView.findViewById(R.id.rowlayoutEditButton);
             delete = itemView.findViewById(R.id.rowlayoutDeleteButton);
             image = itemView.findViewById(R.id.rowlayoutImage);
         }
@@ -69,12 +69,12 @@ public class TableAdapter extends RealmRecyclerViewAdapter<Table, TableAdapter.V
             public void onClick(View view) {activity.delete(u);
             }
         });
-        holder.edit.setTag(u);
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {activity.edit(u);
-            }
-        });
+//        holder.edit.setTag(u);
+//        holder.edit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {activity.edit(u);
+//            }
+//        });
 
         File getImageDir = activity.getExternalCacheDir();  // this method is in the Activity class
 

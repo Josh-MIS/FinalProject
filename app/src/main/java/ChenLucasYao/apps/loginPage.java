@@ -127,12 +127,6 @@ public class loginPage extends AppCompatActivity {
         Table result = user.where(Table.class).equalTo("name", loginUsername.getText().toString()).findFirst();
 
         if (result != null) {
-            if (loginUsername.getText().toString().equals("Administrator")) {
-                if (loginPassword.getText().toString().equals("Password")) {
-                    Intent admin = new Intent(this, adminPage_.class);
-                    startActivity(admin);
-                }
-            }
             if (loginUsername.getText().toString().equals(result.getName())) {
                 if (loginPassword.getText().toString().equals(result.getPassword())) {
                     if (loginRememberMe.isChecked()) {
@@ -159,7 +153,15 @@ public class loginPage extends AppCompatActivity {
             }
         }
         else {
-            Toast.makeText(this, "No User Found", Toast.LENGTH_LONG).show();
+            if (loginUsername.getText().toString().equals("Administrator")) {
+                if (loginPassword.getText().toString().equals("Password")) {
+                    Intent admin = new Intent(this, adminPage_.class);
+                    startActivity(admin);
+                }
+            }
+            else {
+                Toast.makeText(this, "No User Found", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
