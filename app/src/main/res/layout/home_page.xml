@@ -39,4 +39,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homepageLogoutButton" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homepageRecyclerView"
+        android:layout_width="405dp"
+        android:layout_height="318dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="165dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

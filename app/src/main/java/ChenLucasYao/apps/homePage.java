@@ -1,5 +1,6 @@
 package ChenLucasYao.apps;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -45,6 +46,12 @@ public class homePage extends AppCompatActivity {
         if (!user.isClosed()) {
             user.close();
         }
+    }
+
+    @Click
+    public void homepageAddButton() {
+        Intent add = new Intent(this, addFoodPlacePage_.class);
+        startActivity(add);
     }
 
     @Click

@@ -19,8 +19,7 @@ import java.io.File;
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 
-public class TableAdapter extends RealmRecyclerViewAdapter<Table, TableAdapter.ViewHolder> {
-
+public class FoodPlaceAdapter extends RealmRecyclerViewAdapter<FoodPlace, FoodPlaceAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView username;
         TextView password;
@@ -37,9 +36,9 @@ public class TableAdapter extends RealmRecyclerViewAdapter<Table, TableAdapter.V
             image = itemView.findViewById(R.id.rowlayoutImage);
         }
     }
-    adminPage activity;
+    homePage activity;
 
-    public TableAdapter(adminPage activity, @Nullable OrderedRealmCollection<Table> data, boolean autoUpdate) {
+    public FoodPlaceAdapter(homePage activity, @Nullable OrderedRealmCollection<Table> data, boolean autoUpdate) {
         super(data, autoUpdate);
 
         // THIS IS TYPICALLY THE ACTIVITY YOUR RECYCLERVIEW IS IN
@@ -47,17 +46,17 @@ public class TableAdapter extends RealmRecyclerViewAdapter<Table, TableAdapter.V
     }
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public FoodPlaceAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View v = activity.getLayoutInflater().inflate(R.layout.row_layout, parent, false);
+        View v = activity.getLayoutInflater().inflate(R.layout.foodplace_row_layout, parent, false);
 
-        ViewHolder vh = new ViewHolder(v);
+        FoodPlaceAdapter.ViewHolder vh = new FoodPlaceAdapter.ViewHolder(v);
         return vh;
     }
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FoodPlaceAdapter.ViewHolder holder, int position) {
 
-        Table u = getItem(position);
+        FoodPlace u = getItem(position);
 
         holder.username.setText(u.getName());
         holder.password.setText(u.getPassword());
@@ -92,5 +91,5 @@ public class TableAdapter extends RealmRecyclerViewAdapter<Table, TableAdapter.V
             // use a default picture
             holder.image.setImageResource(R.mipmap.ic_launcher);
         }
-}
+    }
 }
