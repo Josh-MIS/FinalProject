@@ -21,7 +21,7 @@ import io.realm.RealmRecyclerViewAdapter;
 
 public class FoodPlaceAdapter extends RealmRecyclerViewAdapter<FoodPlace, FoodPlaceAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView username;
+        TextView name;
         TextView password;
         ImageButton delete;
         ImageView image;
@@ -31,7 +31,7 @@ public class FoodPlaceAdapter extends RealmRecyclerViewAdapter<FoodPlace, FoodPl
 
             username = itemView.findViewById(R.id.rowlayoutUsername);
             password = itemView.findViewById(R.id.rowlayoutPassword);
-//            edit = itemView.findViewById(R.id.rowlayoutEditButton);
+            edit = itemView.findViewById(R.id.rowlayoutEditButton);
             delete = itemView.findViewById(R.id.rowlayoutDeleteButton);
             image = itemView.findViewById(R.id.rowlayoutImage);
         }

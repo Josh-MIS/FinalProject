@@ -7,7 +7,7 @@
     tools:context=".addFoodPlacePage">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/addFoodPlacePageImageButton"
         android:layout_width="134dp"
         android:layout_height="137dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/addFoodPlacePageImageButton"
         app:layout_constraintVertical_bias="0.087" />
 
     <EditText
