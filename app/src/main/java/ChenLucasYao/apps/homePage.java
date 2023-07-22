@@ -31,6 +31,7 @@ public class homePage extends AppCompatActivity {
     }
 
     Realm user;
+    Realm food;
     @AfterViews
     public void init(){
         user = Realm.getDefaultInstance();
@@ -39,6 +40,8 @@ public class homePage extends AppCompatActivity {
         String uuid = checker.getString("UUID", "");
 
         Table result = user.where(Table.class).equalTo("uuid", uuid).findFirst();
+
+        food = Realm.getDefaultInstance();
     }
     public void onDestroy() {
         super.onDestroy();
@@ -46,6 +49,25 @@ public class homePage extends AppCompatActivity {
         if (!user.isClosed()) {
             user.close();
         }
+        if (!food.isClosed()) {
+            food.close();
+        }
+    }
+
+    public void delete(FoodPlace u)
+    {
+        if (u.isValid())
+        {
+            food.beginTransaction();
+            u.deleteFromRealm();
+            food.commitTransaction();
+        }
+    }
+    public void edit(FoodPlace u)
+    {
+        String uuid = u.getUuid();
+
+        editPage_.intent(this).uuidString(uuid).start();
     }
 
     @Click

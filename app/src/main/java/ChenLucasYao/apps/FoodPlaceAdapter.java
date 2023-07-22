@@ -22,23 +22,22 @@ import io.realm.RealmRecyclerViewAdapter;
 public class FoodPlaceAdapter extends RealmRecyclerViewAdapter<FoodPlace, FoodPlaceAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
-        TextView password;
         ImageButton delete;
-        ImageView image;
+        ImageButton edit;
+        ImageButton image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            username = itemView.findViewById(R.id.rowlayoutUsername);
-            password = itemView.findViewById(R.id.rowlayoutPassword);
-            edit = itemView.findViewById(R.id.rowlayoutEditButton);
-            delete = itemView.findViewById(R.id.rowlayoutDeleteButton);
-            image = itemView.findViewById(R.id.rowlayoutImage);
+            name = itemView.findViewById(R.id.foodplaceRowLayoutText);
+            delete = itemView.findViewById(R.id.foodplaceRowLayoutDeleteButton);
+            edit = itemView.findViewById(R.id.foodplaceRowLayoutEditButton);
+            image = itemView.findViewById(R.id.foodplaceRowLayoutImage);
         }
     }
     homePage activity;
 
-    public FoodPlaceAdapter(homePage activity, @Nullable OrderedRealmCollection<Table> data, boolean autoUpdate) {
+    public FoodPlaceAdapter(homePage activity, @Nullable OrderedRealmCollection<FoodPlace> data, boolean autoUpdate) {
         super(data, autoUpdate);
 
         // THIS IS TYPICALLY THE ACTIVITY YOUR RECYCLERVIEW IS IN
@@ -58,8 +57,7 @@ public class FoodPlaceAdapter extends RealmRecyclerViewAdapter<FoodPlace, FoodPl
 
         FoodPlace u = getItem(position);
 
-        holder.username.setText(u.getName());
-        holder.password.setText(u.getPassword());
+        holder.name.setText(u.getFoodPlaceName());
 
         holder.delete.setTag(u);
         holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -67,12 +65,12 @@ public class FoodPlaceAdapter extends RealmRecyclerViewAdapter<FoodPlace, FoodPl
             public void onClick(View view) {activity.delete(u);
             }
         });
-//        holder.edit.setTag(u);
-//        holder.edit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {activity.edit(u);
-//            }
-//        });
+        holder.edit.setTag(u);
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {activity.edit(u);
+            }
+        });
 
         File getImageDir = activity.getExternalCacheDir();  // this method is in the Activity class
 
