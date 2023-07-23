@@ -72,6 +72,7 @@ public class editPage extends AppCompatActivity {
 
     @Click
     public void editCancelButton() {
+        manageaccountPage_.intent(this).uuidString(uuidString).start();
         finish();
     }
 
