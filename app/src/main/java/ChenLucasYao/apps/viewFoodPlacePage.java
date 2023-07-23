@@ -59,6 +59,7 @@ public class viewFoodPlacePage extends AppCompatActivity {
         viewFoodPlacePageName.setText(object.getFoodPlaceName());
         viewFoodPlacePageAddress.setText("Address : " + object.getAddress());
         viewFoodPlacePagePrice.setText("Price : PHP" + object.getPrice());
+        viewFoodPlacePageRating.setRating(object.getRating());
 
         File getImageDir = getExternalCacheDir();
         File savedImage = new File(getImageDir, uuidString+".jpeg");

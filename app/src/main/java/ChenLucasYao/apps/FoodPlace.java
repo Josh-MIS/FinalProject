@@ -10,7 +10,7 @@ public class FoodPlace extends RealmObject {
     private String foodPlaceName;
     private String address;
     private String price;
-    private String rating;
+    private Float rating;
 
     public String getUuid() {
         return uuid;
@@ -44,11 +44,11 @@ public class FoodPlace extends RealmObject {
         this.price = price;
     }
 
-    public String getRating() {
+    public Float getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(Float rating) {
         this.rating = rating;
     }
 

@@ -85,6 +85,7 @@ public class addFoodPlacePage extends AppCompatActivity {
             newItem.setFoodPlaceName(addFoodPlaceName.getText().toString());
             newItem.setAddress(addFoodPlacePageAddress.getText().toString());
             newItem.setPrice(addFoodPlacePagePrice.getText().toString());
+            newItem.setRating(addFoodPlacePageRating.getRating());
 
             long count = 0;
 
