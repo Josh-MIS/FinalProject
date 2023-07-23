@@ -65,7 +65,9 @@ public class manageaccountPage extends AppCompatActivity {
 
     @Click
     public void manageaccountEditButton() {
+
         editPage_.intent(this).uuidString(uuidString).start();
+        finish();
     }
     private void refreshImageView(ImageView imageView, File savedImage) {
 

@@ -101,6 +101,7 @@ public class editPage extends AppCompatActivity {
 
         Toast t = Toast.makeText(this, "Edited", Toast.LENGTH_LONG);
         t.show();
+        manageaccountPage_.intent(this).uuidString(uuidString).start();
         finish();
     }
 
