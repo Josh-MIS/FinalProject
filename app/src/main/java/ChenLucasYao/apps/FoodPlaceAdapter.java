@@ -71,6 +71,12 @@ public class FoodPlaceAdapter extends RealmRecyclerViewAdapter<FoodPlace, FoodPl
             public void onClick(View view) {activity.edit(u);
             }
         });
+        holder.image.setTag(u);
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {activity.image(u);
+            }
+        });
 
         File getImageDir = activity.getExternalCacheDir();  // this method is in the Activity class
 

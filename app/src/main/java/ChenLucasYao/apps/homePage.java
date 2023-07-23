@@ -80,6 +80,13 @@ public class homePage extends AppCompatActivity {
         editFoodPlace.intent(this).uuidString(uuid).start();
     }
 
+    public void image(FoodPlace u)
+    {
+        String uuid = u.getUuid();
+
+        viewFoodPlacePage_.intent(this).uuidString(uuid).start();
+    }
+
     @Click
     public void homepageAddButton() {
         Intent add = new Intent(this, addFoodPlacePage_.class);

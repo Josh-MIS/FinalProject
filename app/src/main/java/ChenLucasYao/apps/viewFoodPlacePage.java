@@ -32,7 +32,7 @@ public class viewFoodPlacePage extends AppCompatActivity {
     }
 
     @Extra
-    String foodUuidString;
+    String uuidString;
 
     @ViewById
     ImageView viewFoodPlacePageImage;
@@ -54,14 +54,14 @@ public class viewFoodPlacePage extends AppCompatActivity {
     @AfterViews
     public void init(){
         food = Realm.getDefaultInstance();
-        FoodPlace object = food.where(FoodPlace.class).equalTo("uuid", foodUuidString).findFirst();
+        FoodPlace object = food.where(FoodPlace.class).equalTo("uuid", uuidString).findFirst();
 
-        viewFoodPlacePageName.setText("Food Place Name : " + object.getFoodPlaceName());
+        viewFoodPlacePageName.setText(object.getFoodPlaceName());
         viewFoodPlacePageAddress.setText("Address : " + object.getAddress());
         viewFoodPlacePagePrice.setText("Price : PHP" + object.getPrice());
 
         File getImageDir = getExternalCacheDir();
-        File savedImage = new File(getImageDir, foodUuidString+".jpeg");
+        File savedImage = new File(getImageDir, uuidString+".jpeg");
 
         if (savedImage.exists()) {
             refreshImageView(viewFoodPlacePageImage, savedImage);
@@ -71,11 +71,6 @@ public class viewFoodPlacePage extends AppCompatActivity {
     @Click
     public void viewFoodPlacePageBackButton(){
         finish();
-    }
-
-    @Click
-    public void viewFoodPlacePageCommentsButton(){
-
     }
 
     private void refreshImageView(ImageView imageView, File savedImage) {
