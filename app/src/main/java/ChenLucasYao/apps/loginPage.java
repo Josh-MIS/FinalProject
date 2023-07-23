@@ -24,11 +24,13 @@ import io.realm.Realm;
 @EActivity
 public class loginPage extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
         Realm.init(this);
+
 
         SharedPreferences checker = getSharedPreferences("data", MODE_PRIVATE);
         String check = checker.getString("rememberMe", "");

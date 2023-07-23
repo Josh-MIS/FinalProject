@@ -32,10 +32,12 @@ public class addFoodPlacePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_food_place_page);
+        food = Realm.getDefaultInstance();
     }
 
+
     @ViewById
-    TextView addFoodPlacePageName;
+    TextView addFoodPlaceName;
 
     @ViewById
     TextView addFoodPlacePageAddress;
@@ -51,11 +53,12 @@ public class addFoodPlacePage extends AppCompatActivity {
 
     Realm food;
 
+
     String foodPlaceUUID = "";
 
     @Click
     public void addFoodPlacePageSaveButton(){
-        if (addFoodPlacePageName.getText().toString().isEmpty()) {
+        if (addFoodPlaceName.getText().toString().isEmpty()) {
             Toast.makeText(this, "Name Cannot Be Blank", Toast.LENGTH_LONG).show();
             return;
         }
@@ -68,9 +71,9 @@ public class addFoodPlacePage extends AppCompatActivity {
             return;
         }
         RealmResults<FoodPlace> r = food.where(FoodPlace.class).findAll();
-        FoodPlace result = food.where(FoodPlace.class).equalTo("foodPlaceName", addFoodPlacePageName.getText().toString()).findFirst();
+        FoodPlace result = food.where(FoodPlace.class).equalTo("foodPlaceName", addFoodPlaceName.getText().toString()).findFirst();
         if (result != null) {
-            if (addFoodPlacePageName.getText().toString().equals(result.getFoodPlaceName())) {
+            if (addFoodPlaceName.getText().toString().equals(result.getFoodPlaceName())) {
                 Toast.makeText(this, "User Already Exists", Toast.LENGTH_LONG).show();
             }
         }
@@ -79,7 +82,7 @@ public class addFoodPlacePage extends AppCompatActivity {
             FoodPlace newItem = new FoodPlace();
 
             newItem.setUuid(foodPlaceUUID);
-            newItem.setFoodPlaceName(addFoodPlacePageName.getText().toString());
+            newItem.setFoodPlaceName(addFoodPlaceName.getText().toString());
             newItem.setAddress(addFoodPlacePageAddress.getText().toString());
             newItem.setPrice(addFoodPlacePagePrice.getText().toString());
 
@@ -166,5 +169,14 @@ public class addFoodPlacePage extends AppCompatActivity {
                 .networkPolicy(NetworkPolicy.NO_CACHE)
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
                 .into(imageView);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Close the Realm instance when the activity is destroyed
+        if (food != null) {
+            food.close();
+        }
     }
 }

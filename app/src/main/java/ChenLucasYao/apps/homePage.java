@@ -3,23 +3,18 @@ package ChenLucasYao.apps;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import java.io.File;
-
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 @EActivity
 public class homePage extends AppCompatActivity {
@@ -29,6 +24,8 @@ public class homePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
     }
+    @ViewById
+    RecyclerView homepageRecyclerView;
 
     Realm user;
     Realm food;
@@ -42,6 +39,19 @@ public class homePage extends AppCompatActivity {
         Table result = user.where(Table.class).equalTo("uuid", uuid).findFirst();
 
         food = Realm.getDefaultInstance();
+
+
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        homepageRecyclerView.setLayoutManager(mLayoutManager);
+
+        user = Realm.getDefaultInstance();
+        RealmResults<FoodPlace> list = user.where(FoodPlace.class).findAll();
+
+        FoodPlaceAdapter adapter = new FoodPlaceAdapter(this, list, true);
+        homepageRecyclerView.setAdapter(adapter);
+
+
     }
     public void onDestroy() {
         super.onDestroy();
@@ -67,7 +77,7 @@ public class homePage extends AppCompatActivity {
     {
         String uuid = u.getUuid();
 
-        editPage_.intent(this).uuidString(uuid).start();
+        editFoodPlace.intent(this).start();
     }
 
     @Click

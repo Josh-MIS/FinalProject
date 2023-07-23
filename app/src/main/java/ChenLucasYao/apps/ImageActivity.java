@@ -185,7 +185,7 @@ public class ImageActivity extends AppCompatActivity
         }
 
 // the main intent is the last in the  list (fucking android) so pickup the useless one
-        Intent mainIntent =  allIntents.get(allIntents.size() - 1);
+        Intent mainIntent =  allIntents.get(allIntents.size() -1);
         for (Intent intent : allIntents) {
             if  (intent.getComponent().getClassName().equals("com.android.documentsui.DocumentsActivity"))  {
                 mainIntent = intent;

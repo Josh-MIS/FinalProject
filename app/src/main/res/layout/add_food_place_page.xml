@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.087" />
 
     <EditText
-        android:id="@+id/addFoodPlacePageName"
+        android:id="@+id/addFoodPlaceName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -45,8 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address : "
-        app:layout_constraintStart_toStartOf="@+id/addFoodPlacePageName"
-        app:layout_constraintTop_toBottomOf="@+id/addFoodPlacePageName" />
+        app:layout_constraintStart_toStartOf="@+id/addFoodPlaceName"
+        app:layout_constraintTop_toBottomOf="@+id/addFoodPlaceName" />
 
     <EditText
         android:id="@+id/addFoodPlacePageAddress"
