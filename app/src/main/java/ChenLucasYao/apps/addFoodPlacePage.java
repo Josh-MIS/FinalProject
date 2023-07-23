@@ -74,7 +74,7 @@ public class addFoodPlacePage extends AppCompatActivity {
         FoodPlace result = food.where(FoodPlace.class).equalTo("foodPlaceName", addFoodPlaceName.getText().toString()).findFirst();
         if (result != null) {
             if (addFoodPlaceName.getText().toString().equals(result.getFoodPlaceName())) {
-                Toast.makeText(this, "User Already Exists", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Food Place Already Exists", Toast.LENGTH_LONG).show();
             }
         }
         else {

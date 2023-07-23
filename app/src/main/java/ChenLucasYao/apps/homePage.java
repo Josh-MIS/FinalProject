@@ -77,7 +77,7 @@ public class homePage extends AppCompatActivity {
     {
         String uuid = u.getUuid();
 
-        editFoodPlace.intent(this).start();
+        editFoodPlace.intent(this).uuidString(uuid).start();
     }
 
     @Click
