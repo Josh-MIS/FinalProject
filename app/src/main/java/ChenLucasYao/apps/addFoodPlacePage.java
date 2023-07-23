@@ -54,7 +54,7 @@ public class addFoodPlacePage extends AppCompatActivity {
     String foodPlaceUUID = "";
 
     @Click
-    public void addFoodPlacePageAddButton(){
+    public void addFoodPlacePageSaveButton(){
         if (addFoodPlacePageName.getText().toString().isEmpty()) {
             Toast.makeText(this, "Name Cannot Be Blank", Toast.LENGTH_LONG).show();
             return;
